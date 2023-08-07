@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/Fatwaff/be_tugbes/model"
-	"github.com/Fatwaff/be_tugbes/module"
+	"github.com/Fatwaff/be_bursa-kerja/model"
+	"github.com/Fatwaff/be_bursa-kerja/module"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
@@ -27,22 +27,22 @@ func TestGetAllDoc(t *testing.T) {
 	fmt.Println(hasil)
 }
 
-func TestGetAllKamtibmas(t *testing.T) {
-	var docs []model.Kamtibmas
-	hasil := module.GetAllDocs(db, "kamtibmas", docs)
-	fmt.Println(hasil)
-}
 
 func TestInsertOneDoc(t *testing.T) {
- 	var doc model.User
-	doc.FirstName = "Fatwa Fatahillah"
-	doc.LastName = "Fatah"
-	doc.Email = "lenovo@gmail.com"
-	doc.Password = "abcdefg"
-	if doc.FirstName == "" || doc.LastName == "" || doc.Email == "" || doc.Password == "" {
+ 	var doc model.Lowongan
+	doc.Logo = "https://fatwaff.github.io/bk-image/user/ford.jpg"
+	doc.Jabatan = "IT Support"
+	doc.Perusahaan = "Ford Company"
+	doc.Lokasi = "Bandung"
+	doc.CreatedAt = "07-08-2023"
+	doc.DeskripsiPekerjaan = "<div><ul><li>Mengurus administrasi bagian marketing</li><li>Membuat Sales Order,membuat Penawaran Harga</li><li>Menerima Purchase Order (PO) Customer</li><li>Membina hubungan baik antara Perusahaan dan Customer</li><li>Bisa bekerja secara akurat dan memperhatikan detail sehingga bisa memproses pesanan dengan cepat dan efisien</li><li>Jujur, pekerja keras,ulet,tekun,bertanggung jawab,punya komitmen yang tinggi, percaya diri, memiliki kemampuan komunikasi yang baik</li></ul></div>"
+	doc.InfoTambahanPekerjaan = "<div><ul><li>Pengalaman 3 tahun kerja</li><li>Pegawai tetap</li></ul></div>"
+	doc.TentangPerusahaan = "<div>Ford Motor Company (commonly known as Ford) is an American multinational automobile manufacturer headquartered in Dearborn, Michigan, United States. It was founded by Henry Ford and incorporated on June 16, 1903. The company sells automobiles and commercial vehicles under the Ford brand, and luxury cars under its Lincoln brand.</div>"
+	doc.InfoTambahanPerusahan = "<div><ul><li>1000-2000 Pekerja</li><li>Industri Manufaktur/Produksi</li></ul></div>"
+	if doc.Logo == "" || doc.Jabatan == "" || doc.Perusahaan == "" || doc.Lokasi == "" || doc.CreatedAt == "" || doc.DeskripsiPekerjaan == "" || doc.InfoTambahanPekerjaan == "" || doc.TentangPerusahaan == "" || doc.InfoTambahanPerusahan == "" {
 		t.Errorf("mohon untuk melengkapi data")
 	} else {
-		insertedID, err := module.InsertOneDoc(db, "user", doc)
+		insertedID, err := module.InsertOneDoc(db, "lowongan", doc)
 		if err != nil {
 			t.Errorf("Error inserting document: %v", err)
 			fmt.Println("Data tidak berhasil disimpan")

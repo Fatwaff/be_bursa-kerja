@@ -14,11 +14,16 @@ type User struct {
 	Salt 			string			   `bson:"salt,omitempty" json:"salt,omitempty"`
 }
 
-type Kamtibmas struct {
-	ID           	primitive.ObjectID `bson:"_id,omitempty" json:"_id,omitempty"`
-	Kecamatan  		string             `bson:"kecamatan,omitempty" json:"kecamatan,omitempty"`
-	Kelurahan  		string             `bson:"kelurahan,omitempty" json:"kelurahan,omitempty"`
-	Pelanggaran  	string             `bson:"jenis_pelanggaran_kamtibmas,omitempty" json:"jenis_pelanggaran_kamtibmas,omitempty"`
-	Lokasi	        string         	   `bson:"lokasi_rawan_kamtibmas,omitempty" json:"lokasi_rawan_kamtibmas,omitempty"`
+type Lowongan struct {
+	ID              		primitive.ObjectID `bson:"_id,omitempty" json:"_id,omitempty"`
+	Logo            		string			   `bson:"logo,omitempty" json:"logo,omitempty"`
+	Jabatan         		string			   `bson:"jabatan,omitempty" json:"jabatan,omitempty"`
+	Perusahaan      		string			   `bson:"perusahaan,omitempty" json:"perusahaan,omitempty"`
+	Lokasi          		string			   `bson:"lokasi,omitempty" json:"lokasi,omitempty"`
+	CreatedAt       		string			   `bson:"createdat,omitempty" json:"createdat,omitempty"`
+	DeskripsiPekerjaan  	string			   `bson:"deskripsipekerjaan,omitempty" json:"deskripsipekerjaan,omitempty"`
+	InfoTambahanPekerjaan   string			   `bson:"infotambahanpekerjaan,omitempty" json:"infotambahanpekerjaan,omitempty"`
+	TentangPerusahaan   	string			   `bson:"tentangperusahaan,omitempty" json:"tentangperusahaan,omitempty"`
+	InfoTambahanPerusahan   string			   `bson:"infotambahanperusahan,omitempty" json:"infotambahanperusahan,omitempty"`
 }
 

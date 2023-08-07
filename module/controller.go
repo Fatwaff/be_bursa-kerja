@@ -9,7 +9,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/Fatwaff/be_tugbes/model"
+	"github.com/Fatwaff/be_bursa-kerja/model"
 	"github.com/badoux/checkmail"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
