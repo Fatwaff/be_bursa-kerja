@@ -41,21 +41,34 @@ func GetUserFromEmail(email string, db *mongo.Database, col string) (result mode
 	return result, nil
 }
 
-func GetDocFromID(_id primitive.ObjectID, db *mongo.Database, col string, doc interface{}) (interface{}, error) {
-	collection := db.Collection(col)
-	filter := bson.M{"_id": _id}
-	err := collection.FindOne(context.TODO(), filter).Decode(&doc)
-	if err != nil {
-		if errors.Is(err, mongo.ErrNoDocuments) {
-			return doc, fmt.Errorf("no data found for ID %s", _id)
-		}
-		return doc, fmt.Errorf("error retrieving data for ID %s: %s", _id, err.Error())
-	}
-	return doc, nil
-}
+// func GetDocFromID(_id primitive.ObjectID, db *mongo.Database, col string, doc interface{}) (interface{}, error) {
+// 	collection := db.Collection(col)
+// 	filter := bson.M{"_id": _id}
+// 	err := collection.FindOne(context.TODO(), filter).Decode(&doc)
+// 	if err != nil {
+// 		if errors.Is(err, mongo.ErrNoDocuments) {
+// 			return doc, fmt.Errorf("no data found for ID %s", _id)
+// 		}
+// 		return doc, fmt.Errorf("error retrieving data for ID %s: %s", _id, err.Error())
+// 	}
+// 	return doc, nil
+// }
 
-func GetDocFromID2(_id primitive.ObjectID, db *mongo.Database, col string) (doc model.User, err error) {
-	collection := db.Collection(col)
+// func GetDocFromID2(_id primitive.ObjectID, db *mongo.Database, col string) (doc model.Lowongan, err error) {
+// 	collection := db.Collection(col)
+// 	filter := bson.M{"_id": _id}
+// 	err = collection.FindOne(context.TODO(), filter).Decode(&doc)
+// 	if err != nil {
+// 		if errors.Is(err, mongo.ErrNoDocuments) {
+// 			return doc, fmt.Errorf("no data found for ID %s", _id)
+// 		}
+// 		return doc, fmt.Errorf("error retrieving data for ID %s: %s", _id, err.Error())
+// 	}
+// 	return doc, nil
+// }
+
+func GetLowonganFromID(_id primitive.ObjectID) (doc model.Lowongan, err error) {
+	collection := MongoConnect().Collection("lowongan")
 	filter := bson.M{"_id": _id}
 	err = collection.FindOne(context.TODO(), filter).Decode(&doc)
 	if err != nil {

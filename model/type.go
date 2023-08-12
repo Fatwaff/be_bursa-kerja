@@ -24,6 +24,6 @@ type Lowongan struct {
 	DeskripsiPekerjaan  	string			   `bson:"deskripsipekerjaan,omitempty" json:"deskripsipekerjaan,omitempty"`
 	InfoTambahanPekerjaan   string			   `bson:"infotambahanpekerjaan,omitempty" json:"infotambahanpekerjaan,omitempty"`
 	TentangPerusahaan   	string			   `bson:"tentangperusahaan,omitempty" json:"tentangperusahaan,omitempty"`
-	InfoTambahanPerusahan   string			   `bson:"infotambahanperusahan,omitempty" json:"infotambahanperusahan,omitempty"`
+	InfoTambahanPerusahaan  string			   `bson:"infotambahanperusahaan,omitempty" json:"infotambahanperusahaan,omitempty"`
 }
 
