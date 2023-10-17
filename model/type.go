@@ -12,6 +12,8 @@ type User struct {
 	Password        string         	   `bson:"password,omitempty" json:"password,omitempty"`
 	Confirmpassword string         	   `bson:"confirmpass,omitempty" json:"confirmpass,omitempty"`
 	Salt 			string			   `bson:"salt,omitempty" json:"salt,omitempty"`
+	Role     		string			   `bson:"role,omitempty" json:"role,omitempty" `
+
 }
 
 type Lowongan struct {
@@ -25,5 +27,11 @@ type Lowongan struct {
 	InfoTambahanPekerjaan   string			   `bson:"infotambahanpekerjaan,omitempty" json:"infotambahanpekerjaan,omitempty"`
 	TentangPerusahaan   	string			   `bson:"tentangperusahaan,omitempty" json:"tentangperusahaan,omitempty"`
 	InfoTambahanPerusahaan  string			   `bson:"infotambahanperusahaan,omitempty" json:"infotambahanperusahaan,omitempty"`
+}
+
+type Credential struct {
+	Status  bool   `json:"status" bson:"status"`
+	Token   string `json:"token,omitempty" bson:"token,omitempty"`
+	Message string `json:"message,omitempty" bson:"message,omitempty"`
 }
 
