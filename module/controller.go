@@ -45,32 +45,6 @@ func GetUserFromEmail(email string, db *mongo.Database, col string) (result mode
 	return result, nil
 }
 
-// func GetDocFromID(_id primitive.ObjectID, db *mongo.Database, col string, doc interface{}) (interface{}, error) {
-// 	collection := db.Collection(col)
-// 	filter := bson.M{"_id": _id}
-// 	err := collection.FindOne(context.TODO(), filter).Decode(&doc)
-// 	if err != nil {
-// 		if errors.Is(err, mongo.ErrNoDocuments) {
-// 			return doc, fmt.Errorf("no data found for ID %s", _id)
-// 		}
-// 		return doc, fmt.Errorf("error retrieving data for ID %s: %s", _id, err.Error())
-// 	}
-// 	return doc, nil
-// }
-
-// func GetDocFromID2(_id primitive.ObjectID, db *mongo.Database, col string) (doc model.Lowongan, err error) {
-// 	collection := db.Collection(col)
-// 	filter := bson.M{"_id": _id}
-// 	err = collection.FindOne(context.TODO(), filter).Decode(&doc)
-// 	if err != nil {
-// 		if errors.Is(err, mongo.ErrNoDocuments) {
-// 			return doc, fmt.Errorf("no data found for ID %s", _id)
-// 		}
-// 		return doc, fmt.Errorf("error retrieving data for ID %s: %s", _id, err.Error())
-// 	}
-// 	return doc, nil
-// }
-
 func GetLowonganFromID(_id primitive.ObjectID) (doc model.Lowongan, err error) {
 	collection := MongoConnect().Collection("lowongan")
 	filter := bson.M{"_id": _id}
@@ -136,16 +110,6 @@ func DeleteDocsByID(_id primitive.ObjectID, db *mongo.Database, col string) erro
 	return nil
 }
 
-// func EmailExists(db *mongo.Database, col string, email string) bool {
-// 	collection := db.Collection(col)
-// 	filter := bson.M{"email": email}
-// 	count, err := collection.CountDocuments(context.Background(), filter)
-// 	if err != nil {
-// 		fmt.Printf("Error EmailExists : %v\n", err)
-// 	}
-// 	return count > 0
-// }
-
 func SignUp(db *mongo.Database, col string, insertedDoc model.User) (insertedID primitive.ObjectID, err error) {
 	if insertedDoc.FirstName == "" || insertedDoc.LastName == "" || insertedDoc.Email == "" || insertedDoc.Password == "" {
 		return insertedID, fmt.Errorf("mohon untuk melengkapi data")
@@ -195,9 +159,6 @@ func LogIn(db *mongo.Database, col string, insertedDoc model.User) (email string
 	}
 	hash := argon2.IDKey([]byte(insertedDoc.Password), salt, 1, 64*1024, 4, 32)
 	if hex.EncodeToString(hash) != existsDoc.Password {
-		// fmt.Println("insert :", hex.EncodeToString(hash))
-		// fmt.Println("exist :", existsDoc.Password)
-		// fmt.Println("salt :", salt)
 		return email, fmt.Errorf("password salah")
 	}
 	return existsDoc.Email, nil

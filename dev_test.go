@@ -72,33 +72,6 @@ func TestUpdateOneDoc(t *testing.T) {
 	}
 }
 
-// func TestGetDocFromID(t *testing.T){
-// 	var data model.Lowongan
-// 	id := "64d0b1104255ba95ba588512"
-// 	objectId, err := primitive.ObjectIDFromHex(id)
-// 	if err != nil{
-// 		t.Fatalf("error converting id to objectID: %v", err)
-// 	}
-// 	doc, err := module.GetDocFromID(objectId, db, "lowongan", data)
-// 	if err != nil {
-// 		t.Fatalf("error calling GetDocFromID: %v", err)
-// 	}
-// 	fmt.Println(doc)
-// }
-
-// func TestGetDocFromID2(t *testing.T){
-// 	id := "64d0b1104255ba95ba588512"
-// 	objectId, err := primitive.ObjectIDFromHex(id)
-// 	if err != nil{
-// 		t.Fatalf("error converting id to objectID: %v", err)
-// 	}
-// 	doc, err := module.GetDocFromID2(objectId, db, "lowongan")
-// 	if err != nil {
-// 		t.Fatalf("error calling GetDocFromID: %v", err)
-// 	}
-// 	fmt.Println(doc)
-// }
-
 func TestGetLowonganFromID(t *testing.T){
 	id := "64d0b1104255ba95ba588512"
 	objectId, err := primitive.ObjectIDFromHex(id)
